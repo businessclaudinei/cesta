@@ -1,1 +1,37 @@
-<p>editor-product works!</p>
+<br><br>
+<div class="uk-flex-center" uk-grid>
+  <div class="uk-width-1-2@m">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h3 class="uk-card-title">Gestão de Produtos</h3>
+      <form [formGroup]="form">
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="id" formControlName="id" />
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="title" formControlName="title" />
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="price" formControlName="price" />
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="description" formControlName="description" />
+        </div>
+        <div class="uk-margin">
+          <input type="text" class="uk-input uk-form-large" placeholder="quantity" formControlName="quantity" />
+        </div>
+        <div class="uk-margin">
+          <select class="uk-input uk-form-large" formControlName="category">
+            <option value="{{ item.id }}" *ngFor="let item of categories">
+              {{ item.title }}
+            </option>
+          </select>
+        </div>
+      </form>
+      <div class="uk-margin uk-text-right">
+        <button class="uk-button uk-button-default" (click)="create()" *ngIf="mode=='create'">Salvar</button>
+        <button class="uk-button uk-button-primary" (click)="update()" *ngIf="mode=='update'">Editar</button>
+        <button class="uk-button uk-button-danger" (click)="delete()" *ngIf="mode=='update'">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
