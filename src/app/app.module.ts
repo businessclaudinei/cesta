@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { EditorProductComponent } from './pages/product/editor-product/editor-product.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
