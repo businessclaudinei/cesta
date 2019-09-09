@@ -1,1 +1,31 @@
-<p>product-list works!</p>
+<app-loading [data]="products"></app-loading>
+<table class="uk-table uk-table-striped uk-table-hover uk-table-divider" *ngIf="products?.length > 0">
+  <thead>
+    <tr>
+      <th class="uk-text-center">#</th>
+      <th class="uk-text-center">Título</th>
+      <th class="uk-text-center">Preço</th>
+      <th class="uk-text-center">Descrição</th>
+      <th class="uk-text-center">Quantidade</th>
+      <th class="uk-text-center">Categoria</th>
+      <th class="uk-text-center"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products">
+      <td>{{item.id}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.price}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.category.title}}</td>
+      <td>
+        <div class="uk-margin uk-text-right"><button class="uk-button uk-button-default"
+            (click)="select(item)">SELECIONAR</button></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<button class="uk-button uk-button-primary" (click)="createNew()">NOVO PRODUTO</button>
+<app-editor-product [product]="product" [products]="products" [mode]="mode"></app-editor-product>
