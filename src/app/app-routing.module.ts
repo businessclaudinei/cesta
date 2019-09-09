@@ -10,8 +10,8 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
-  {path:'home',component:ProductListComponent, canActivate:[AuthenticatedGuard,ManagerGuard]},
-  {path:'edit',component:EditorProductComponent, canActivate:[ManagerGuard]}
+  {path:'home',component:ProductListComponent, canActivate:[AuthenticatedGuard]},
+  {path:'edit',component:EditorProductComponent, canActivate:[AuthenticatedGuard,ManagerGuard]}
 ];
  
 @NgModule({

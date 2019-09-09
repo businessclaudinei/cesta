@@ -1,3 +1,5 @@
+import { ManagerGuard } from './guard/manager.guard';
+import { AuthenticatedGuard } from './guard/authenticated.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthenticatedGuard,ManagerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

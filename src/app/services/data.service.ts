@@ -10,7 +10,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getLoginInformation(userId:number){
-    return this.http.get(`${this.url}${userId}`);
+  getToken(email:string){
+    return this.http.post(`${this.url}token/${email}`,{});
   }
 }

@@ -11,26 +11,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 public form :FormGroup;
+
   constructor(private router: Router, private service: DataService,private fb:FormBuilder) { 
-    this.form = this.fb.group(
-      {email:['', Validators.required]},
-      {password:['', Validators.required]}
-      );
+    this.form = this.fb.group({
+      email:['', Validators.required],
+      password:['', Validators.required]
+    });
   }
 
   ngOnInit() {
-    var login = localStorage.getItem('login');
-    if(login != null){
-      this.router.navigate['home'];
-    }
+    this.router.navigate(['home']);
   }
 
   submit(){
-    this.service.getLoginInformation(2).subscribe((res:Result)=>{
+    this.service.getToken(this.form.controls.email.value).subscribe((res:Result)=>{
       if(res.success){
-        localStorage.setItem('login',res.data);
+        localStorage.setItem('login',JSON.stringify(res.data));
+        this.router.navigate(['home']);
       }
-    });
+    },(err)=>{console.log(err);});
   };
 
 }

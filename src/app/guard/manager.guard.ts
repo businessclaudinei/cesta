@@ -1,12 +1,13 @@
+import { Login } from './../models/login.model';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 
 @Injectable()
 export class ManagerGuard implements CanActivate {
   canActivate():boolean{
-    const user = localStorage.get('user');
+    const login:Login = JSON.parse(localStorage.getItem('login'));
 
-    return user.type=='manager';
+    return login.roles.indexOf('edit') !== -1;
   }
   
 }
